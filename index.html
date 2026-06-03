@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Obras y Reformas Sevilla - Reformas Integrales de Lujo y Minimalismo Cálido</title>
+    <meta name="description" content="Reformas integrales de pisos, cocinas y baños en Sevilla. Presupuesto cerrado, diseño minimalista cálido, plazos garantizados y acabados de alta gama."/>
+    <link rel="icon" type="image/png" href="assets/favicon.png"/>
+    
+    <!-- Tailwind CSS with plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind Custom Configuration -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#d47070",
+              "primary-fixed": "#fbe8d8",
+              "inverse-surface": "#3a302a",
+              "on-tertiary-fixed-variant": "#6e3030",
+              "tertiary-fixed": "#fce0e0",
+              "on-primary-fixed": "#401a08",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed": "#eae2da",
+              "on-primary-container": "#fbe8d8",
+              "on-background": "#3a302a",
+              "outline": "#9a9088",
+              "secondary-container": "#eae2da",
+              "surface-variant": "#ece6dc",
+              "surface-container": "#f2ece4",
+              "error": "#c0392b",
+              "tertiary": "#8c3c3c",
+              "secondary-fixed-dim": "#cec6be",
+              "primary-fixed-dim": "#f0a878",
+              "on-secondary": "#ffffff",
+              "primary-container": "#e08850",
+              "on-error-container": "#7a1a10",
+              "surface-dim": "#dcd6cc",
+              "surface": "#faf5ee",
+              "surface-container-high": "#ece6dc",
+              "secondary": "#78706a",
+              "on-surface": "#3a302a",
+              "background": "#faf5ee",
+              "on-error": "#ffffff",
+              "surface-tint": "#c2652a",
+              "error-container": "#fce4e0",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-tertiary-container": "#3a2020",
+              "inverse-primary": "#f0a878",
+              "surface-bright": "#faf5ee",
+              "on-primary-fixed-variant": "#8a4518",
+              "on-secondary-fixed-variant": "#504840",
+              "inverse-on-surface": "#faf5ee",
+              "primary": "#c2652a",
+              "on-secondary-container": "#605850",
+              "on-secondary-fixed": "#2a2420",
+              "outline-variant": "#d8d0c8",
+              "on-surface-variant": "#605850",
+              "surface-container-low": "#f6f0e8",
+              "surface-container-highest": "#e6e0d6",
+              "on-tertiary-fixed": "#2e1515",
+              "tertiary-fixed-dim": "#e8a0a0"
+            },
+            borderRadius: {
+              "DEFAULT": "8px",
+              "lg": "12px",
+              "xl": "16px",
+              "full": "9999px"
+            },
+            spacing: {},
+            fontFamily: {
+              "headline": ["EB Garamond", "serif"],
+              "display": ["EB Garamond", "serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Manrope", "sans-serif"]
+            },
+            fontSize: {},
+            boxShadow: {
+              "sahara": "0 2px 16px rgba(58, 48, 42, 0.04)"
+            }
+          },
+        },
+      }
+    </script>
+    
+    <style>
+        body {
+            font-family: "Manrope", sans-serif;
+        }
+        .bg-hero {
+            background-image: linear-gradient(to right, rgba(58, 48, 42, 0.9) 0%, rgba(58, 48, 42, 0.6) 50%, rgba(58, 48, 42, 0.3) 100%), url("assets/hero.png");
+            background-size: cover;
+            background-position: center;
+        }
+        /* Custom scrollbar matching Sahara colors */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #faf5ee;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d8d0c8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c2652a;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body text-base antialiased overflow-x-hidden">
+
+    <!-- TopNavBar -->
+    <nav class="bg-surface/95 backdrop-blur-md text-inverse-surface fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm transition-all duration-300" id="main-nav">
+        <div class="flex justify-between items-center h-[72px] px-4 md:px-6 max-w-7xl mx-auto">
+            <div class="font-headline text-2xl font-extrabold text-inverse-surface flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-3xl" style='font-variation-settings: "FILL" 1;'>architecture</span>
+                <span>Obras y Reformas Sevilla</span>
+            </div>
+            
+            <!-- Desktop menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <div class="flex items-center gap-6">
+                    <a class="text-on-surface hover:text-primary transition-colors font-medium text-sm" href="#servicios">Servicios</a>
+                    <a class="text-on-surface hover:text-primary transition-colors font-medium text-sm" href="#proyectos">Proyectos</a>
+                    <a class="text-on-surface hover:text-primary transition-colors font-medium text-sm" href="#testimonios">Testimonios</a>
+                    <a class="text-on-surface hover:text-primary transition-colors font-medium text-sm" href="#faq">FAQ</a>
+                    <a class="text-on-surface hover:text-primary transition-colors font-medium text-sm" href="#contacto">Contacto</a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a class="text-inverse-surface font-bold hover:text-primary transition-colors flex items-center gap-1 text-sm" href="tel:955191895">
+                        <span class="material-symbols-outlined text-base">call</span>
+                        955 19 18 95
+                    </a>
+                    <a class="bg-primary text-on-primary px-6 py-2.5 rounded-DEFAULT font-label text-xs font-bold hover:bg-primary/95 transition-all shadow-sahara hover:shadow-md" href="#contacto">
+                        PIDE TU PRESUPUESTO
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-inverse-surface p-2 focus:outline-none" id="mobile-menu-btn" aria-label="Abrir menú">
+                <span class="material-symbols-outlined text-3xl" id="menu-icon">menu</span>
+            </button>
+        </div>
+        
+        <!-- Mobile Drawer -->
+        <div class="hidden md:hidden bg-surface border-t border-outline-variant/30 px-6 py-6 space-y-4 shadow-lg transition-all duration-300" id="mobile-menu">
+            <a class="block text-on-surface hover:text-primary transition-colors font-medium text-base py-2 border-b border-outline-variant/10" href="#servicios">Servicios</a>
+            <a class="block text-on-surface hover:text-primary transition-colors font-medium text-base py-2 border-b border-outline-variant/10" href="#proyectos">Proyectos</a>
+            <a class="block text-on-surface hover:text-primary transition-colors font-medium text-base py-2 border-b border-outline-variant/10" href="#testimonios">Testimonios</a>
+            <a class="block text-on-surface hover:text-primary transition-colors font-medium text-base py-2 border-b border-outline-variant/10" href="#faq">FAQ</a>
+            <a class="block text-on-surface hover:text-primary transition-colors font-medium text-base py-2 border-b border-outline-variant/10" href="#contacto">Contacto</a>
+            <div class="pt-4 space-y-4">
+                <a class="text-inverse-surface font-bold hover:text-primary transition-colors flex items-center gap-2 text-base" href="tel:955191895">
+                    <span class="material-symbols-outlined text-lg">call</span>
+                    955 19 18 95
+                </a>
+                <a class="block text-center bg-primary text-on-primary px-6 py-3 rounded-DEFAULT font-label text-sm font-bold hover:bg-primary/90 transition-colors shadow-md" href="#contacto">
+                    PIDE TU PRESUPUESTO
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative pt-[72px] min-h-[90vh] flex items-center bg-hero">
+        <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface/90 via-inverse-surface/75 to-transparent"></div>
+        <div class="w-full max-w-7xl mx-auto px-4 md:px-6 relative z-10 flex flex-col lg:flex-row items-center gap-12 py-16 md:py-24">
+            <div class="flex-1 text-white">
+                <div class="flex items-center gap-2 mb-6 bg-surface/10 backdrop-blur-md w-fit px-4 py-2 rounded-full border border-white/20">
+                    <div class="flex text-primary">
+                        <span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined text-sm" style='font-variation-settings: "FILL" 1;'>star_half</span>
+                    </div>
+                    <span class="font-label text-xs font-bold text-white tracking-wide">4.6/5 en Google Reviews</span>
+                </div>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-3xl">
+                    Reformamos tu hogar en Sevilla con plazos que se cumplen
+                </h1>
+                <p class="font-body text-base md:text-lg text-surface-container-lowest/80 mb-10 max-w-2xl font-light">
+                    Reformas integrales de pisos, cocinas y baños con el sello del minimalismo cálido. Presupuesto cerrado por contrato, sin sorpresas, y limpieza diaria de la obra.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a class="bg-primary text-on-primary px-8 py-4 rounded-DEFAULT font-label text-sm font-bold text-center hover:bg-primary-container hover:text-on-primary-container transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 duration-300" href="#contacto">
+                        Pide tu presupuesto gratis
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                    <a class="border border-white/60 text-white px-8 py-4 rounded-DEFAULT font-label text-sm font-bold text-center hover:bg-white hover:text-inverse-surface transition-all flex items-center justify-center gap-2 duration-300" href="#proyectos">
+                        Ver trabajos realizados
+                        <span class="material-symbols-outlined text-sm">photo_library</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Estimate Form -->
+            <div class="w-full max-w-md bg-surface-container-lowest rounded-xl shadow-[0_20px_40px_rgba(58,48,42,0.08)] border border-outline-variant/30 p-8">
+                <h3 class="font-headline text-3xl text-inverse-surface mb-2 font-semibold">Calcula tu presupuesto</h3>
+                <p class="text-on-surface-variant mb-6 font-body text-sm font-light">Diseño a medida y respuesta en menos de 24 horas.</p>
+                
+                <form class="space-y-4" id="hero-quote-form">
+                    <div>
+                        <label class="sr-only" for="hero-name">Tu nombre</label>
+                        <input id="hero-name" required class="w-full bg-surface-container-low border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT px-4 py-3 font-body text-sm transition-all placeholder:text-on-surface-variant/50" placeholder="Tu nombre" type="text"/>
+                    </div>
+                    <div>
+                        <label class="sr-only" for="hero-phone">Teléfono</label>
+                        <input id="hero-phone" required class="w-full bg-surface-container-low border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT px-4 py-3 font-body text-sm transition-all placeholder:text-on-surface-variant/50" placeholder="Teléfono" type="tel"/>
+                    </div>
+                    <div>
+                        <label class="sr-only" for="hero-type">Tipo de reforma</label>
+                        <select id="hero-type" required class="w-full bg-surface-container-low border border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT px-4 py-3 font-body text-sm text-on-surface-variant transition-all">
+                            <option value="">Tipo de reforma...</option>
+                            <option value="integral">Reforma Integral</option>
+                            <option value="cocina">Cocina de Autor</option>
+                            <option value="bano">Baño Wellness</option>
+                            <option value="otros">Otros Proyectos</option>
+                        </select>
+                    </div>
+                    <button class="w-full bg-inverse-surface text-inverse-on-surface px-6 py-4 rounded-DEFAULT font-label text-xs font-bold hover:bg-primary hover:text-on-primary transition-all duration-300 mt-2 shadow-sm" type="submit">
+                        SOLICITAR INFORMACIÓN
+                    </button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- TRUST BAR -->
+    <section class="bg-surface-container-lowest border-b border-surface-container/50 py-10 relative z-20 shadow-sahara">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
+                <div class="flex flex-col items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-4xl">workspace_premium</span>
+                    <div class="flex flex-col">
+                        <span class="font-label text-sm font-bold text-inverse-surface">+15 Años Exp.</span>
+                        <span class="text-xs text-on-surface-variant/80 font-light">Proyectos de alta gama</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-4xl">groups</span>
+                    <div class="flex flex-col">
+                        <span class="font-label text-sm font-bold text-inverse-surface">Plantilla Propia</span>
+                        <span class="text-xs text-on-surface-variant/80 font-light">Profesionales expertos</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-4xl">event_available</span>
+                    <div class="flex flex-col">
+                        <span class="font-label text-sm font-bold text-inverse-surface">Plazos Garantizados</span>
+                        <span class="text-xs text-on-surface-variant/80 font-light">Penalización por retraso</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-4xl">euro_symbol</span>
+                    <div class="flex flex-col">
+                        <span class="font-label text-sm font-bold text-inverse-surface">Precio Cerrado</span>
+                        <span class="text-xs text-on-surface-variant/80 font-light">Sin desvíos por contrato</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-3 col-span-2 md:col-span-1">
+                    <span class="material-symbols-outlined text-primary text-4xl">cleaning_services</span>
+                    <div class="flex flex-col">
+                        <span class="font-label text-sm font-bold text-inverse-surface">Limpieza Diaria</span>
+                        <span class="text-xs text-on-surface-variant/80 font-light">Mínimo impacto y orden</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS SECTION -->
+    <section id="servicios" class="py-20 md:py-28 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+                <span class="text-primary font-label text-xs font-bold uppercase tracking-wider">Nuestros Servicios</span>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-inverse-surface mt-3 mb-6 leading-tight">
+                    Artesanía y precisión en cada rincón
+                </h2>
+                <p class="font-body text-base text-on-surface-variant font-light">
+                    Creamos espacios que respiran calma, orden y sofisticación. Diseños minimalistas concebidos para durar y ser disfrutados todos los días.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Servicio 1 -->
+                <div class="bg-surface-container-low rounded-lg p-8 border border-outline-variant/40 shadow-sahara hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+                    <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center text-primary mb-6">
+                        <span class="material-symbols-outlined text-2xl">home_work</span>
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold text-inverse-surface mb-3">Reformas Integrales</h3>
+                    <p class="text-on-surface-variant text-sm font-light leading-relaxed mb-6 flex-grow">
+                        Transformamos viviendas por completo con un hilo estético unificado. Coordinación milimétrica y plazos estrictos para una entrega sin fricciones.
+                    </p>
+                    <a href="#contacto" class="text-primary hover:text-tertiary font-bold font-label text-xs tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        MÁS INFORMACIÓN
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </a>
+                </div>
+                <!-- Servicio 2 -->
+                <div class="bg-surface-container-low rounded-lg p-8 border border-outline-variant/40 shadow-sahara hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+                    <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center text-primary mb-6">
+                        <span class="material-symbols-outlined text-2xl">countertops</span>
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold text-inverse-surface mb-3">Cocinas de Autor</h3>
+                    <p class="text-on-surface-variant text-sm font-light leading-relaxed mb-6 flex-grow">
+                        Combinamos estética cálida y funcionalidad moderna. Muebles de madera noble, encimeras de piedra natural y una ergonomía excepcional.
+                    </p>
+                    <a href="#contacto" class="text-primary hover:text-tertiary font-bold font-label text-xs tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        MÁS INFORMACIÓN
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </a>
+                </div>
+                <!-- Servicio 3 -->
+                <div class="bg-surface-container-low rounded-lg p-8 border border-outline-variant/40 shadow-sahara hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+                    <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center text-primary mb-6">
+                        <span class="material-symbols-outlined text-2xl">shower</span>
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold text-inverse-surface mb-3">Baños Wellness</h3>
+                    <p class="text-on-surface-variant text-sm font-light leading-relaxed mb-6 flex-grow">
+                        Espacios de relax inspirados en spas mediterráneos. Microcemento continuo, griferías empotradas de latón cepillado y platos a ras de suelo.
+                    </p>
+                    <a href="#contacto" class="text-primary hover:text-tertiary font-bold font-label text-xs tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        MÁS INFORMACIÓN
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </a>
+                </div>
+                <!-- Servicio 4 -->
+                <div class="bg-surface-container-low rounded-lg p-8 border border-outline-variant/40 shadow-sahara hover:-translate-y-1 transition-all duration-300 flex flex-col h-full">
+                    <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center text-primary mb-6">
+                        <span class="material-symbols-outlined text-2xl">architecture</span>
+                    </div>
+                    <h3 class="font-headline text-2xl font-bold text-inverse-surface mb-3">Diseño e Interiorismo</h3>
+                    <p class="text-on-surface-variant text-sm font-light leading-relaxed mb-6 flex-grow">
+                        Definimos la luz, la paleta cromática y la materialidad antes de la obra. Un servicio integral llave en mano para conceptualizar tu hogar ideal.
+                    </p>
+                    <a href="#contacto" class="text-primary hover:text-tertiary font-bold font-label text-xs tracking-wider inline-flex items-center gap-1.5 transition-colors">
+                        MÁS INFORMACIÓN
+                        <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS SECTION -->
+    <section id="proyectos" class="py-20 md:py-28 bg-surface-container-low border-y border-outline-variant/20">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div class="max-w-2xl mb-8 md:mb-0">
+                    <span class="text-primary font-label text-xs font-bold uppercase tracking-wider">Portafolio</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-semibold text-inverse-surface mt-3 leading-tight">
+                        Proyectos que inspiran calma
+                    </h2>
+                </div>
+                <!-- Filter tabs -->
+                <div class="flex flex-wrap gap-2 text-sm font-medium" id="portfolio-filters">
+                    <button class="px-5 py-2 rounded-full border border-primary bg-primary text-on-primary transition-all duration-300" data-filter="all">Todos</button>
+                    <button class="px-5 py-2 rounded-full border border-outline-variant/60 hover:border-primary text-on-surface-variant hover:text-primary transition-all duration-300" data-filter="integral">Integrales</button>
+                    <button class="px-5 py-2 rounded-full border border-outline-variant/60 hover:border-primary text-on-surface-variant hover:text-primary transition-all duration-300" data-filter="cocina">Cocinas</button>
+                    <button class="px-5 py-2 rounded-full border border-outline-variant/60 hover:border-primary text-on-surface-variant hover:text-primary transition-all duration-300" data-filter="bano">Baños</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- Proyecto 1 (Living) -->
+                <div class="portfolio-item group bg-surface rounded-lg overflow-hidden border border-outline-variant/40 shadow-sahara transition-all duration-500" data-category="integral">
+                    <div class="overflow-hidden relative h-[320px]">
+                        <img src="assets/living_room.png" alt="Reforma integral salón minimalista cálido" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                        <div class="absolute inset-0 bg-inverse-surface/10 group-hover:bg-inverse-surface/20 transition-colors duration-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">REFORMA INTEGRAL — TRIANA</span>
+                        <h3 class="font-headline text-2xl font-bold text-inverse-surface mt-2 mb-1">Apartamento Adriano</h3>
+                        <p class="text-on-surface-variant text-sm font-light">Espacios diáfanos con luz natural, maderas claras y paredes texturizadas.</p>
+                    </div>
+                </div>
+                <!-- Proyecto 2 (Kitchen) -->
+                <div class="portfolio-item group bg-surface rounded-lg overflow-hidden border border-outline-variant/40 shadow-sahara transition-all duration-500" data-category="cocina">
+                    <div class="overflow-hidden relative h-[320px]">
+                        <img src="assets/kitchen.png" alt="Reforma de cocina moderna de diseño" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                        <div class="absolute inset-0 bg-inverse-surface/10 group-hover:bg-inverse-surface/20 transition-colors duration-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">COCINA DE AUTOR — NERVIÓN</span>
+                        <h3 class="font-headline text-2xl font-bold text-inverse-surface mt-2 mb-1">Cocina de Madera y Mármol</h3>
+                        <p class="text-on-surface-variant text-sm font-light">Mobiliario de roble integrado, isla central de piedra y grifería de latón mate.</p>
+                    </div>
+                </div>
+                <!-- Proyecto 3 (Bathroom) -->
+                <div class="portfolio-item group bg-surface rounded-lg overflow-hidden border border-outline-variant/40 shadow-sahara transition-all duration-500" data-category="bano">
+                    <div class="overflow-hidden relative h-[320px]">
+                        <img src="assets/bathroom.png" alt="Reforma de baño wellness en Sevilla" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                        <div class="absolute inset-0 bg-inverse-surface/10 group-hover:bg-inverse-surface/20 transition-colors duration-300"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-primary font-label text-[10px] font-bold uppercase tracking-wider">BAÑO WELLNESS — LOS REMEDIOS</span>
+                        <h3 class="font-headline text-2xl font-bold text-inverse-surface mt-2 mb-1">Baño de Microcemento y Madera</h3>
+                        <p class="text-on-surface-variant text-sm font-light">Paredes continuas, lavabo de arcilla artesanal y ducha acristalada empotrada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS SECTION -->
+    <section id="testimonios" class="py-20 md:py-28 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+                <span class="text-primary font-label text-xs font-bold uppercase tracking-wider">Testimonios</span>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-inverse-surface mt-3 mb-6 leading-tight">
+                    La opinión de quienes confían en nosotros
+                </h2>
+                <p class="font-body text-base text-on-surface-variant font-light">
+                    Nuestra mayor garantía es la satisfacción de nuestros clientes. Proyectos limpios, sin desvíos y con un trato exquisito.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonio 1 -->
+                <div class="bg-surface-container rounded-lg p-8 border border-outline-variant/30 shadow-sahara flex flex-col">
+                    <div class="flex text-primary mb-4">
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                    </div>
+                    <blockquote class="text-inverse-surface text-base font-light italic flex-grow leading-relaxed mb-6">
+                        "La mejor decisión que tomamos. Cumplieron los plazos de entrega al día y la comunicación con el jefe de obra fue diaria y fluida. El resultado de la reforma de mi baño superó mis expectativas."
+                    </blockquote>
+                    <div>
+                        <cite class="not-italic font-bold text-inverse-surface font-label text-sm block">María J.</cite>
+                        <span class="text-on-surface-variant text-xs font-light">Reforma de Baño en Triana</span>
+                    </div>
+                </div>
+                <!-- Testimonio 2 -->
+                <div class="bg-surface-container rounded-lg p-8 border border-outline-variant/30 shadow-sahara flex flex-col">
+                    <div class="flex text-primary mb-4">
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                    </div>
+                    <blockquote class="text-inverse-surface text-base font-light italic flex-grow leading-relaxed mb-6">
+                        "Buscábamos una reforma de cocina con acabados limpios y cálidos. Entendieron perfectamente el concepto minimalista. Fueron increíblemente profesionales, limpios en el día a día y muy detallistas."
+                    </blockquote>
+                    <div>
+                        <cite class="not-italic font-bold text-inverse-surface font-label text-sm block">Carlos M.</cite>
+                        <span class="text-on-surface-variant text-xs font-light">Reforma de Cocina en Nervión</span>
+                    </div>
+                </div>
+                <!-- Testimonio 3 -->
+                <div class="bg-surface-container rounded-lg p-8 border border-outline-variant/30 shadow-sahara flex flex-col">
+                    <div class="flex text-primary mb-4">
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                        <span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>star</span>
+                    </div>
+                    <blockquote class="text-inverse-surface text-base font-light italic flex-grow leading-relaxed mb-6">
+                        "Hicimos la reforma integral de nuestra casa con ellos. El presupuesto fue cerrado de verdad, sin costes ocultos ni sorpresas finales. Volveríamos a contratarlos sin dudarlo."
+                    </blockquote>
+                    <div>
+                        <cite class="not-italic font-bold text-inverse-surface font-label text-sm block">Sofía y Alejandro</cite>
+                        <span class="text-on-surface-variant text-xs font-light">Reforma Integral en el Aljarafe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 md:py-28 bg-surface-container-low border-t border-outline-variant/20">
+        <div class="max-w-4xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary font-label text-xs font-bold uppercase tracking-wider">Preguntas Frecuentes</span>
+                <h2 class="font-display text-4xl md:text-5xl font-semibold text-inverse-surface mt-3 mb-4">
+                    Todo lo que necesitas saber
+                </h2>
+                <p class="font-body text-base text-on-surface-variant font-light">Respondemos a tus dudas principales antes de comenzar la obra.</p>
+            </div>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item border border-outline-variant/50 rounded-lg bg-surface overflow-hidden transition-all duration-300">
+                    <button class="w-full flex justify-between items-center px-6 py-5 text-left font-bold text-inverse-surface hover:text-primary transition-colors focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-label text-base md:text-lg">¿Cómo garantizáis los plazos de entrega?</span>
+                        <span class="material-symbols-outlined faq-arrow transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-6 text-on-surface-variant text-sm md:text-base font-light leading-relaxed">
+                            Firmamos un calendario de ejecución por contrato, detallando las fechas de inicio y finalización de cada fase. Si no cumplimos con los plazos estipulados, nos penalizamos económicamente por cada día de retraso.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="faq-item border border-outline-variant/50 rounded-lg bg-surface overflow-hidden transition-all duration-300">
+                    <button class="w-full flex justify-between items-center px-6 py-5 text-left font-bold text-inverse-surface hover:text-primary transition-colors focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-label text-base md:text-lg">¿El presupuesto es cerrado realmente?</span>
+                        <span class="material-symbols-outlined faq-arrow transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-6 text-on-surface-variant text-sm md:text-base font-light leading-relaxed">
+                            Sí. Dedicamos el tiempo necesario en las fases iniciales a realizar mediciones exactas y a definir todos los materiales. El presupuesto firmado en contrato es inamovible, salvo que desees añadir extras de manera voluntaria.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="faq-item border border-outline-variant/50 rounded-lg bg-surface overflow-hidden transition-all duration-300">
+                    <button class="w-full flex justify-between items-center px-6 py-5 text-left font-bold text-inverse-surface hover:text-primary transition-colors focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-label text-base md:text-lg">¿Cómo gestionáis la limpieza diaria?</span>
+                        <span class="material-symbols-outlined faq-arrow transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-6 text-on-surface-variant text-sm md:text-base font-light leading-relaxed">
+                            Mantenemos la obra limpia día a día. Nuestro personal recoge los escombros y limpia las zonas comunes de la finca cada tarde para reducir molestias a ti y a los vecinos, asegurando un ambiente de trabajo ordenado y seguro.
+                        </div>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="faq-item border border-outline-variant/50 rounded-lg bg-surface overflow-hidden transition-all duration-300">
+                    <button class="w-full flex justify-between items-center px-6 py-5 text-left font-bold text-inverse-surface hover:text-primary transition-colors focus:outline-none" onclick="toggleFaq(this)">
+                        <span class="font-label text-base md:text-lg">¿Qué tipo de garantía ofrecéis?</span>
+                        <span class="material-symbols-outlined faq-arrow transition-transform duration-300">expand_more</span>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <div class="px-6 pb-6 text-on-surface-variant text-sm md:text-base font-light leading-relaxed">
+                            Todas nuestras reformas cuentan con una garantía por escrito de 2 años sobre la ejecución. Trabajamos únicamente con materiales certificados y proveedores de primer nivel, lo que garantiza la longevidad del proyecto.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO SECTION -->
+    <section id="contacto" class="py-20 md:py-28 bg-surface border-t border-outline-variant/20">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+                <!-- Info Column -->
+                <div class="lg:col-span-5 flex flex-col justify-center">
+                    <span class="text-primary font-label text-xs font-bold uppercase tracking-wider">Contacto</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-semibold text-inverse-surface mt-3 mb-6">
+                        Comencemos a diseñar tu nuevo espacio
+                    </h2>
+                    <p class="text-on-surface-variant font-light mb-10 leading-relaxed">
+                        Estamos en Sevilla capital, pero realizamos reformas en toda la provincia. Escríbenos, llámanos o ven a visitarnos para estudiar la viabilidad y distribución de tu proyecto.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center text-primary shrink-0">
+                                <span class="material-symbols-outlined text-xl">call</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-on-surface-variant font-light">Llámanos</span>
+                                <a href="tel:955191895" class="font-bold text-inverse-surface hover:text-primary transition-colors text-lg">955 19 18 95</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center text-primary shrink-0">
+                                <span class="material-symbols-outlined text-xl">mail</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-on-surface-variant font-light">Escríbenos</span>
+                                <a href="mailto:info@obrasyreformassevilla.es" class="font-bold text-inverse-surface hover:text-primary transition-colors text-lg">info@obrasyreformassevilla.es</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center text-primary shrink-0">
+                                <span class="material-symbols-outlined text-xl">location_on</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-on-surface-variant font-light">Estudio y Oficinas</span>
+                                <address class="not-italic font-bold text-inverse-surface text-lg">Calle Adriano, 12, 41001 Sevilla</address>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-primary-fixed rounded-full flex items-center justify-center text-primary shrink-0">
+                                <span class="material-symbols-outlined text-xl">schedule</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-on-surface-variant font-light">Horario de Atención</span>
+                                <span class="font-bold text-inverse-surface text-lg">Lunes a Viernes: 8:30 – 18:30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Column -->
+                <div class="lg:col-span-7 bg-surface-container rounded-xl p-8 border border-outline-variant/40 shadow-sahara">
+                    <h3 class="font-headline text-3xl font-bold text-inverse-surface mb-2">Solicita un Presupuesto Gratuito</h3>
+                    <p class="text-on-surface-variant text-sm font-light mb-8">Rellena el formulario y un técnico se pondrá en contacto contigo para concertar una visita técnica sin compromiso.</p>
+                    
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6" id="main-contact-form">
+                        <div class="md:col-span-1">
+                            <label class="block text-xs font-bold text-inverse-surface mb-2 font-label uppercase tracking-wider" for="contact-name">Nombre</label>
+                            <input id="contact-name" required type="text" class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT px-4 py-3 font-body text-sm transition-all" placeholder="Tu nombre completo"/>
+                        </div>
+                        <div class="md:col-span-1">
+                            <label class="block text-xs font-bold text-inverse-surface mb-2 font-label uppercase tracking-wider" for="contact-phone">Teléfono</label>
+                            <input id="contact-phone" required type="tel" class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT px-4 py-3 font-body text-sm transition-all" placeholder="Ej: 600 000 000"/>
+                        </div>
+                        <div class="md:col-span-1">
+                            <label class="block text-xs font-bold text-inverse-surface mb-2 font-label uppercase tracking-wider" for="contact-email">Email</label>
+                            <input id="contact-email" required type="email" class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT px-4 py-3 font-body text-sm transition-all" placeholder="Ej: maria@ejemplo.com"/>
+                        </div>
+                        <div class="md:col-span-1">
+                            <label class="block text-xs font-bold text-inverse-surface mb-2 font-label uppercase tracking-wider" for="contact-type">Tipo de Reforma</label>
+                            <select id="contact-type" required class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT px-4 py-3 font-body text-sm text-on-surface-variant transition-all">
+                                <option value="">Selecciona...</option>
+                                <option value="integral">Reforma Integral de Vivienda</option>
+                                <option value="cocina">Reforma de Cocina</option>
+                                <option value="bano">Reforma de Baño</option>
+                                <option value="exterior">Terrasa / Exteriores</option>
+                                <option value="otros">Otros trabajos</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-inverse-surface mb-2 font-label uppercase tracking-wider" for="contact-message">Detalles del Proyecto</label>
+                            <textarea id="contact-message" required rows="4" class="w-full bg-surface-container-lowest border border-outline-variant/60 focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT px-4 py-3 font-body text-sm transition-all" placeholder="Cuéntanos un poco sobre tu vivienda, metros cuadrados estimados, localización..."></textarea>
+                        </div>
+                        <div class="md:col-span-2 flex items-start mt-2">
+                            <input id="contact-agree" required type="checkbox" class="mt-1 text-primary focus:ring-primary border-outline-variant rounded-sm"/>
+                            <label for="contact-agree" class="ml-2.5 text-xs text-on-surface-variant font-light leading-normal select-none">
+                                Acepto la <a href="#" class="underline hover:text-primary">política de privacidad</a> y autorizo el tratamiento de mis datos para la elaboración del presupuesto.
+                            </label>
+                        </div>
+                        <div class="md:col-span-2 mt-4">
+                            <button type="submit" class="w-full bg-primary text-on-primary hover:bg-inverse-surface hover:text-inverse-on-surface px-8 py-4 rounded-DEFAULT font-label text-sm font-bold shadow-md hover:shadow-lg transition-all duration-300">
+                                ENVIAR SOLICITUD DE PRESUPUESTO
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-inverse-surface text-inverse-on-surface font-body text-base w-full py-16">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="font-headline text-3xl font-extrabold text-inverse-on-surface flex items-center gap-2 mb-4">
+                        <span class="material-symbols-outlined text-primary text-3xl" style='font-variation-settings: "FILL" 1;'>architecture</span>
+                        <span>Obras y Reformas Sevilla</span>
+                    </div>
+                    <p class="text-inverse-on-surface/75 font-light text-sm max-w-sm leading-relaxed">
+                        Comprometidos con la excelencia y el diseño atemporal. Especialistas en hacer de tu reforma una experiencia tranquila, transparente y con acabados de primera calidad.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-label text-xs font-bold tracking-widest uppercase mb-4 text-white">Navegación</h4>
+                    <ul class="space-y-2 text-sm font-light">
+                        <li><a href="#servicios" class="text-inverse-on-surface/70 hover:text-white transition-colors">Servicios</a></li>
+                        <li><a href="#proyectos" class="text-inverse-on-surface/70 hover:text-white transition-colors">Proyectos</a></li>
+                        <li><a href="#testimonios" class="text-inverse-on-surface/70 hover:text-white transition-colors">Testimonios</a></li>
+                        <li><a href="#faq" class="text-inverse-on-surface/70 hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#contacto" class="text-inverse-on-surface/70 hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-label text-xs font-bold tracking-widest uppercase mb-4 text-white">Contacto Directo</h4>
+                    <ul class="space-y-3 text-sm font-light">
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-base">call</span>
+                            <a href="tel:955191895" class="text-inverse-on-surface/70 hover:text-white transition-colors font-semibold">955 19 18 95</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-base">mail</span>
+                            <a href="mailto:info@obrasyreformassevilla.es" class="text-inverse-on-surface/70 hover:text-white transition-colors">info@obrasyreformassevilla.es</a>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-primary text-base mt-0.5">location_on</span>
+                            <span class="text-inverse-on-surface/70">Calle Adriano, 12, 41001 Sevilla</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-inverse-on-surface/50 text-xs">
+                    © 2026 Obras y Reformas Sevilla. Todos los derechos reservados.
+                </div>
+                <div class="flex gap-6 text-xs text-inverse-on-surface/60">
+                    <a class="hover:text-white transition-colors" href="#">Aviso Legal</a>
+                    <a class="hover:text-white transition-colors" href="#">Política de Privacidad</a>
+                    <a class="hover:text-white transition-colors" href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(37,211,102,0.4)] hover:scale-110 active:scale-95 transition-all z-50 group" href="https://wa.me/34955191895" rel="noopener noreferrer" target="_blank" aria-label="Escríbenos por WhatsApp">
+        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.458 5.705 1.459h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Custom Toast Notification -->
+    <div id="toast" class="fixed bottom-6 left-6 bg-inverse-surface border border-outline-variant/40 text-inverse-on-surface px-6 py-4 rounded-lg shadow-xl translate-y-24 opacity-0 transition-all duration-300 z-50 max-w-sm flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary text-2xl shrink-0">check_circle</span>
+        <div class="flex flex-col">
+            <span class="font-bold font-label text-sm text-white">¡Solicitud recibida!</span>
+            <span class="text-xs text-inverse-on-surface/85 font-light mt-0.5">Te responderemos en menos de 24 horas laborables.</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Sticky Header scroll styling
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 15) {
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-surface/95', 'bg-surface-container-lowest/95');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('bg-surface-container-lowest/95', 'bg-surface/95');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            if (isOpen) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.textContent = 'menu';
+            } else {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.textContent = 'close';
+            }
+        });
+
+        // Close mobile drawer when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.textContent = 'menu';
+            });
+        });
+
+        // FAQ Accordion
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const content = item.querySelector('.faq-content');
+            const arrow = button.querySelector('.faq-arrow');
+            const isOpen = item.classList.contains('faq-open');
+
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(el => {
+                el.classList.remove('faq-open');
+                el.querySelector('.faq-content').style.maxHeight = null;
+                el.querySelector('.faq-arrow').classList.remove('rotate-180');
+            });
+
+            // Open clicked item if it was closed
+            if (!isOpen) {
+                item.classList.add('faq-open');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                arrow.classList.add('rotate-180');
+            }
+        }
+
+        // Portfolio Category Filter
+        const filterButtons = document.querySelectorAll('#portfolio-filters button');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active styling from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-on-primary');
+                    btn.classList.add('border-outline-variant/60', 'text-on-surface-variant', 'hover:text-primary');
+                });
+                // Add active styling to clicked button
+                button.classList.add('bg-primary', 'text-on-primary');
+                button.classList.remove('border-outline-variant/60', 'text-on-surface-variant', 'hover:text-primary');
+
+                const filter = button.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            item.classList.add('hidden');
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Toast function
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 5000);
+        }
+
+        // Form Submit Listeners
+        const heroForm = document.getElementById('hero-quote-form');
+        if (heroForm) {
+            heroForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                heroForm.reset();
+                showToast();
+            });
+        }
+
+        const contactForm = document.getElementById('main-contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                contactForm.reset();
+                showToast();
+            });
+        }
+    </script>
+</body>
+</html>
