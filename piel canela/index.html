@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>PIEL CANELA BRONZE - Spa de Bronceado Brasilero en Sevilla</title>
+    <meta name="description" content="Primer Spa de Bronceado Brasilero en Andalucía. Bronceado natural, uniforme y duradero sin colorantes ni caña de azúcar en Sevilla. Reserva online estilo Booksy."/>
+    <link rel="icon" type="image/png" href="assets/favicon.png"/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body class="loading-state">
+
+    <!-- PRELOADER LOADER -->
+    <div id="preloader" class="preloader">
+        <div class="loader-logo-wrapper">
+            <img src="assets/brand_logo.png" alt="Piel Canela Logo" class="loader-logo">
+            <div class="loader-ping-ring"></div>
+        </div>
+        <h1 class="loader-title">PIEL CANELA</h1>
+        <p class="loader-subtitle">Spa de Bronceado Brasilero</p>
+    </div>
+
+    <!-- INTERACTIVE PARTICLE CANVAS -->
+    <canvas id="particle-canvas" class="particle-canvas"></canvas>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="app-header" id="main-header">
+        <div class="header-container">
+            <!-- Brand Logo & Name -->
+            <a href="#" class="brand-logo-group">
+                <div class="brand-logo-circle">
+                    <img src="assets/brand_logo.png" alt="Logo" class="logo-img">
+                </div>
+                <div class="brand-text-wrapper">
+                    <span class="brand-title">PIEL CANELA</span>
+                    <span class="brand-subtitle">BRONZE &bull; SEVILLA</span>
+                </div>
+            </a>
+
+            <!-- Categories Navbar Links -->
+            <nav class="header-nav">
+                <button class="header-nav-link active" data-category="bronceados">Bronceado</button>
+                <button class="header-nav-link" data-category="bonos">Bonos</button>
+                <button class="header-nav-link" data-category="corporales">Corporal</button>
+                <button class="header-nav-link" data-category="cejas">Cejas</button>
+                <button class="header-nav-link" id="about-us-link">Sobre Nosotros</button>
+            </nav>
+
+            <!-- Navigation Actions -->
+            <div class="nav-actions">
+                <!-- Search bar desktop -->
+                <div class="search-wrapper">
+                    <input type="text" id="search-services" placeholder="Buscar servicios..." class="search-input">
+                    <span class="material-symbols-outlined search-icon">search</span>
+                </div>
+                
+
+                
+                <!-- Mobile Menu Trigger -->
+                <button id="mobile-menu-trigger" class="btn-menu-toggle mobile-only">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="main-container">
+        
+        <!-- HERO / COVER AREA -->
+        <section class="hero-banner">
+            <div class="hero-gradient-overlay"></div>
+            <div class="hero-img-wrapper">
+                <img src="assets/hero_spa.jpg" alt="Interior del spa Piel Canela" class="hero-img" id="hero-img">
+            </div>
+            
+            <div class="hero-content">
+                <!-- Salon details -->
+                <div class="hero-details">
+                    <div class="hero-badges-row">
+                        <span class="badge-award">Nº 1 en Andalucía</span>
+                        <div class="hero-rating">
+                            <span class="material-symbols-outlined icon-fill">star</span>
+                            <span class="rating-value">4.7</span>
+                            <span class="reviews-count">(77 opiniones)</span>
+                        </div>
+                    </div>
+                    
+                    <h2 class="hero-title">
+                        PIEL CANELA &bull; BRONZE
+                    </h2>
+                    <p class="hero-subtext">
+                        Primer Spa de Bronceado Brasilero en Andalucía. Resultados radiantes y uniformes sin químicos ni caña de azúcar. Técnicas seguras y personalizadas.
+                    </p>
+                    <div class="hero-meta-row">
+                        <span class="meta-item">
+                            <span class="material-symbols-outlined text-gold">location_on</span>
+                            Calle Luis de Morales, 32 (Edif. Fórum), Local 9, Sevilla
+                        </span>
+                        <span class="meta-item">
+                            <span class="material-symbols-outlined text-gold">schedule</span>
+                            <span id="opening-status" class="opening-status">Consultando...</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Quick CTA button -->
+                <div class="hero-cta-wrapper">
+                    <button id="hero-cta-btn" class="magnetic-btn btn-primary">
+                        Reservar Cita
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOKING INTERFACE: TWO COLUMNS (SALON INFO & BOOKING WIDGET) -->
+        <div class="layout-grid">
+            
+            <!-- LEFT COLUMN: CATEGORY SELECTOR & ABOUT -->
+            <aside class="sidebar-column">
+                
+                <!-- Categories Card -->
+                <div class="glass-card card-tilt">
+                    <h3 class="card-title">
+                        <span class="material-symbols-outlined text-gold">spa</span>
+                        Servicios
+                    </h3>
+                    <nav class="category-nav" id="category-navigation">
+                        <button class="category-btn active" data-category="bronceados">
+                            Bronceado Brasilero
+                            <span class="material-symbols-outlined arrow-icon">arrow_right</span>
+                        </button>
+                        <button class="category-btn" data-category="bonos">
+                            Bonos Ahorro
+                            <span class="material-symbols-outlined arrow-icon">arrow_right</span>
+                        </button>
+                        <button class="category-btn" data-category="corporales">
+                            Tratamientos Corporales
+                            <span class="material-symbols-outlined arrow-icon">arrow_right</span>
+                        </button>
+                        <button class="category-btn" data-category="cejas">
+                            Cejas y Pestañas
+                            <span class="material-symbols-outlined arrow-icon">arrow_right</span>
+                        </button>
+                        <button class="category-btn" id="about-us-sidebar-btn" style="margin-top: 12px; border-top: 1px solid rgba(223, 186, 140, 0.15); padding-top: 16px;">
+                            Sobre Nosotros
+                            <span class="material-symbols-outlined arrow-icon">arrow_right</span>
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Open Hours Card -->
+                <div class="glass-card card-tilt">
+                    <h3 class="card-title">
+                        <span class="material-symbols-outlined text-gold">schedule</span>
+                        Horario de Apertura
+                    </h3>
+                    <ul class="hours-list">
+                        <li data-day="1">
+                            <span class="day-name">Lunes</span>
+                            <span class="hours-val">10:00 - 15:00 &bull; 16:00 - 20:30</span>
+                        </li>
+                        <li data-day="2">
+                            <span class="day-name">Martes</span>
+                            <span class="hours-val">10:00 - 15:00 &bull; 16:00 - 20:00</span>
+                        </li>
+                        <li data-day="3">
+                            <span class="day-name">Miércoles</span>
+                            <span class="hours-val">10:00 - 15:00 &bull; 16:00 - 20:30</span>
+                        </li>
+                        <li data-day="4">
+                            <span class="day-name">Jueves</span>
+                            <span class="hours-val">10:00 - 15:00 &bull; 16:00 - 20:30</span>
+                        </li>
+                        <li data-day="5">
+                            <span class="day-name">Viernes</span>
+                            <span class="hours-val">10:00 - 15:00 &bull; 16:00 - 20:00</span>
+                        </li>
+                        <li data-day="6">
+                            <span class="day-name font-bold text-gold">Sábado</span>
+                            <span class="hours-val font-bold text-gold">10:00 - 14:00</span>
+                        </li>
+                        <li data-day="0" class="closed-row">
+                            <span class="day-name">Domingo</span>
+                            <span class="hours-val">Cerrado</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Info Map Card -->
+                <div class="glass-card card-tilt">
+                    <h3 class="card-title">
+                        <span class="material-symbols-outlined text-gold">map</span>
+                        Ubicación
+                    </h3>
+                    <div class="mock-map">
+                        <div class="map-inner-content">
+                            <span class="material-symbols-outlined map-pin">location_on</span>
+                            <span class="map-title">Luis de Morales, 32</span>
+                            <span class="map-subtitle">Edificio Fórum, Sevilla</span>
+                            <a href="https://maps.google.com/?q=Calle+Luis+de+Morales+32+Sevilla" target="_blank" class="map-link">Ver en Google Maps</a>
+                        </div>
+                        <div class="map-grid-bg"></div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- RIGHT COLUMN: SERVICES & CATALOG LIST -->
+            <section class="catalog-column">
+                
+                <!-- Search bar for Mobile -->
+                <div class="mobile-search-wrapper">
+                    <input type="text" id="search-services-mobile" placeholder="Buscar servicios..." class="search-input-mobile">
+                    <span class="material-symbols-outlined search-icon-mobile">search</span>
+                </div>
+
+                <!-- Services Container -->
+                <div id="services-catalog" class="services-catalog">
+                    
+                    <!-- CATEGORY: Bronceados -->
+                    <div class="catalog-section" id="section-bronceados">
+                        <h4 class="catalog-section-title">
+                            Bronceado Brasilero
+                            <span class="title-line"></span>
+                        </h4>
+                        <div class="services-grid">
+                            
+                            <!-- Service Item 1 -->
+                            <div class="service-card card-tilt" data-name="bronceado sencillo" data-desc="servicio basico para un tono dorado natural">
+                                <div class="service-info">
+                                    <h5 class="service-name">Bronceado sencillo</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>45 min</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">50,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Servicio básico para lograr un tono dorado natural y uniforme desde la primera sesión.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="bronceado-sencillo" data-service-name="Bronceado sencillo" data-service-price="50.00" data-service-duration="45 min">
+                                    Reservar
+                                </button>
+                            </div>
+                            
+                            <!-- Service Item 2 -->
+                            <div class="service-card card-tilt" data-name="dark tanning" data-desc="bronceado de alta intensidad para un tono chocolate mas marcado">
+                                <div class="service-info">
+                                    <h5 class="service-name">Dark tanning</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>45 min</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">65,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Bronceado de alta intensidad formulado para un tono chocolate profundo y duradero.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="dark-tanning" data-service-name="Dark tanning" data-service-price="65.00" data-service-duration="45 min">
+                                    Reservar
+                                </button>
+                            </div>
+
+                            <!-- Service Item 3 -->
+                            <div class="service-card card-tilt" data-name="berry bronze" data-desc="bronceado premium con efecto berry luminoso e hidratacion profunda">
+                                <div class="service-info">
+                                    <h5 class="service-name">Berry bronze</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>1h</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">100,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Bronceado premium enriquecido con efecto berry luminoso e hidratación profunda antienvejecimiento.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="berry-bronze" data-service-name="Berry bronze" data-service-price="100.00" data-service-duration="1h">
+                                    Reservar
+                                </button>
+                            </div>
+
+                            <!-- Service Item 4 -->
+                            <div class="service-card card-tilt" data-name="metamorfosis" data-desc="el tratamiento mas completo para una transformacion total del bronceado brasilero">
+                                <div class="service-info">
+                                    <h5 class="service-name">Metamorfosis</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>1h</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">150,00 €</span>
+                                    </div>
+                                    <p class="service-desc">El ritual más exclusivo y completo. Diseñado para una transformación total con exfoliación, hidratación y bronceado de lujo.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="metamorfosis" data-service-name="Metamorfosis" data-service-price="150.00" data-service-duration="1h">
+                                    Reservar
+                                </button>
+                            </div>
+
+                            <!-- Service Item 5 -->
+                            <div class="service-card card-tilt" data-name="mantenimiento" data-desc="sesion expres para conservar tu tono ideal">
+                                <div class="service-info">
+                                    <h5 class="service-name">Mantenimiento</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>30 min</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">35,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Sesión exprés para prolongar, retocar y conservar tu tono ideal por más tiempo.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="mantenimiento" data-service-name="Mantenimiento" data-service-price="35.00" data-service-duration="30 min">
+                                    Reservar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORY: Bonos -->
+                    <div class="catalog-section hidden" id="section-bonos">
+                        <h4 class="catalog-section-title">
+                            Bonos Ahorro
+                            <span class="title-line"></span>
+                        </h4>
+                        <div class="services-grid">
+                            <!-- Service Item 6 -->
+                            <div class="service-card card-tilt" data-name="bono dark tanning" data-desc="pack de 3 sesiones de dark tanning">
+                                <div class="service-info">
+                                    <h5 class="service-name">
+                                        BONO DARK TANNING
+                                        <span class="promo-badge">Ahorro</span>
+                                    </h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>1h</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">195,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Pack promocional de 3 sesiones completas de bronceado brasileño Dark Tanning.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="bono-dark-tanning" data-service-name="BONO DARK TANNING" data-service-price="195.00" data-service-duration="1h">
+                                    Reservar
+                                </button>
+                            </div>
+
+                            <!-- Service Item 7 -->
+                            <div class="service-card card-tilt" data-name="bono berry bronze" data-desc="pack de 3 sesiones de berry bronze">
+                                <div class="service-info">
+                                    <h5 class="service-name">
+                                        BONO BERRY BRONZE
+                                        <span class="promo-badge">Ahorro</span>
+                                    </h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>1h</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">300,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Pack de ahorro con 3 sesiones completas del tratamiento premium Berry Bronze.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="bono-berry-bronze" data-service-name="BONO BERRY BRONZE" data-service-price="300.00" data-service-duration="1h">
+                                    Reservar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORY: Tratamientos Corporales -->
+                    <div class="catalog-section hidden" id="section-corporales">
+                        <h4 class="catalog-section-title">
+                            Tratamientos Corporales
+                            <span class="title-line"></span>
+                        </h4>
+                        <div class="services-grid">
+                            <!-- Service Item 8 -->
+                            <div class="service-card card-tilt" data-name="quemadores de grasa" data-desc="tratamiento corporal quemagrasa localizado">
+                                <div class="service-info">
+                                    <h5 class="service-name">Quemadores de grasa</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>45 min</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">65,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Tratamiento de estética corporal enfocado en activar la quema de grasa localizada.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="quemadores-grasa" data-service-name="Quemadores de grasa" data-service-price="65.00" data-service-duration="45 min">
+                                    Reservar
+                                </button>
+                            </div>
+
+                            <!-- Service Item 9 -->
+                            <div class="service-card card-tilt" data-name="tratamiento tonificante" data-desc="tonificacion intensiva de la piel">
+                                <div class="service-info">
+                                    <h5 class="service-name">Tratamiento tonificante</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>45 min</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">65,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Sesión de estimulación reafirmante corporal para aportar elasticidad y tono a la piel.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="tratamiento-tonificante" data-service-name="Tratamiento tonificante" data-service-price="65.00" data-service-duration="45 min">
+                                    Reservar
+                                </button>
+                            </div>
+
+                            <!-- Service Item 10 -->
+                            <div class="service-card card-tilt" data-name="aclarador de zonas" data-desc="aclarado estetico de zonas intimas o axilas e ingles">
+                                <div class="service-info">
+                                    <h5 class="service-name">Aclarador de zonas</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>30 min</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">30,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Tratamiento estético despigmentante para aclarar zonas oscurecidas (axilas, ingles o zonas íntimas).</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="aclarador-zonas" data-service-name="Aclarador de zonas" data-service-price="30.00" data-service-duration="30 min">
+                                    Reservar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CATEGORY: Cejas -->
+                    <div class="catalog-section hidden" id="section-cejas">
+                        <h4 class="catalog-section-title">
+                            Cejas y Pestañas
+                            <span class="title-line"></span>
+                        </h4>
+                        <div class="services-grid">
+                            <!-- Service Item 11 -->
+                            <div class="service-card card-tilt" data-name="lifting de cejas" data-desc="lifting de cejas para mirada alzada">
+                                <div class="service-info">
+                                    <h5 class="service-name">Lifting de cejas</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>20 min</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">10,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Definición y peinado semipermanente de cejas para levantar y dar volumen a la mirada.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="lifting-cejas" data-service-name="Lifting de cejas" data-service-price="10.00" data-service-duration="20 min">
+                                    Reservar
+                                </button>
+                            </div>
+
+                            <!-- Service Item 12 -->
+                            <div class="service-card card-tilt" data-name="lifting y diseno de cejas" data-desc="completo tratamiento de cejas con diseno">
+                                <div class="service-info">
+                                    <h5 class="service-name">Lifting + diseño de cejas</h5>
+                                    <div class="service-meta">
+                                        <span class="duration-meta"><span class="material-symbols-outlined">schedule</span>45 min</span>
+                                        <span class="meta-dot">&bull;</span>
+                                        <span class="price-meta">30,00 €</span>
+                                    </div>
+                                    <p class="service-desc">Tratamiento completo: laminado/lifting, depilación de precisión y tinte para unas cejas perfectas.</p>
+                                </div>
+                                <button class="book-service-btn" data-service-id="lifting-diseno-cejas" data-service-name="Lifting + diseño de cejas" data-service-price="30.00" data-service-duration="45 min">
+                                    Reservar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GALLERY SECTION (Motionsites-style slider) -->
+                <div class="gallery-wrapper-card">
+                    <div class="gallery-glow-bg"></div>
+                    <div class="gallery-header">
+                        <div class="gallery-title-box">
+                            <span class="gallery-tag">Nuestra Galería</span>
+                            <h4 class="gallery-headline">Resultados Radiantes</h4>
+                        </div>
+                        <div class="gallery-nav-controls desktop-only">
+                            <button id="gallery-prev" class="gallery-arrow"><span class="material-symbols-outlined">arrow_back</span></button>
+                            <button id="gallery-next" class="gallery-arrow"><span class="material-symbols-outlined">arrow_forward</span></button>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-viewport">
+                        <div class="gallery-track" id="gallery-slider">
+                            <div class="gallery-slide">
+                                <img src="assets/client_result1.jpg" alt="Resultado de bronceado brasilero">
+                                <div class="slide-caption">
+                                    <span class="caption-highlight">Efecto Canela</span> &bull; Tono uniforme y duradero.
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="assets/client_result2.jpg" alt="Resultado bronceado de clienta">
+                                <div class="slide-caption">
+                                    <span class="caption-highlight">Bronceado Brasilero</span> &bull; Resultados inmediatos y naturales.
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="assets/client_result3.jpg" alt="Piel canela bronce glow">
+                                <div class="slide-caption">
+                                    <span class="caption-highlight">Glow Canela</span> &bull; Brillo e hidratación profunda.
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="assets/client_result4.jpg" alt="Clienta de piel canela bronce">
+                                <div class="slide-caption">
+                                    <span class="caption-highlight">Tono Dorado Intenso</span> &bull; Sin colorantes ni químicos.
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="assets/client_result5.jpg" alt="Marcas perfectas de bronceado">
+                                <div class="slide-caption">
+                                    <span class="caption-highlight">Luz de Sol Natural</span> &bull; Marcas perfectas y tono uniforme.
+                                </div>
+                            </div>
+                            <div class="gallery-slide">
+                                <img src="assets/client_result6.jpg" alt="Piel canela bronce resultado">
+                                <div class="slide-caption">
+                                    <span class="caption-highlight">Piel Canela Bronze</span> &bull; Tu tono ideal en Sevilla.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REAL REVIEWS SECTION -->
+                <div class="reviews-wrapper-card">
+                    <div class="reviews-header">
+                        <h4 class="reviews-title">Lo que dicen nuestras clientas</h4>
+                        <div class="reviews-badge">
+                            <span class="material-symbols-outlined icon-fill">star</span>
+                            <span class="badge-text">4.7 / 5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-stars">
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                            </div>
+                            <p class="review-text">"Súper contenta con los resultados"</p>
+                            <span class="review-author">— Gema Sánchez R.</span>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-stars">
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                            </div>
+                            <p class="review-text">"Me encantó y la chica muy guapa y agradable. ¡Volveré! 🫶🏼"</p>
+                            <span class="review-author">— Selene A.</span>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-stars">
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                                <span class="material-symbols-outlined icon-fill">star</span>
+                            </div>
+                            <p class="review-text">"Me encantó el resultado 😍"</p>
+                            <span class="review-author">— Angela M.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ ACCORDION SECTION -->
+                <div class="faq-wrapper-card">
+                    <h4 class="faq-card-title">Preguntas Frecuentes</h4>
+                    <div class="faq-accordion" id="faq-accordion">
+                        <div class="faq-item">
+                            <button class="faq-question-btn" onclick="toggleFaq(this)">
+                                <span>¿Qué diferencia hay con otros bronceados?</span>
+                                <span class="material-symbols-outlined faq-arrow">expand_more</span>
+                            </button>
+                            <div class="faq-content">
+                                <p class="faq-answer">
+                                    A diferencia del autobronceado químico o de caña de azúcar, nuestra técnica estimula el color natural de tu piel de manera segura, consiguiendo una tonalidad radiante, uniforme y sin manchas naranjas.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question-btn" onclick="toggleFaq(this)">
+                                <span>¿Cuánto dura el bronceado brasilero?</span>
+                                <span class="material-symbols-outlined faq-arrow">expand_more</span>
+                            </button>
+                            <div class="faq-content">
+                                <p class="faq-answer">
+                                    Suele durar entre 2 y 3 semanas, dependiendo del tipo de piel y de los cuidados posteriores. Recomendamos hidratar mucho la piel diariamente y realizar sesiones de mantenimiento para conservarlo indefinidamente.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question-btn" onclick="toggleFaq(this)">
+                                <span>¿Cómo debo prepararme para la sesión?</span>
+                                <span class="material-symbols-outlined faq-arrow">expand_more</span>
+                            </button>
+                            <div class="faq-content">
+                                <p class="faq-answer">
+                                    Recomendamos exfoliar tu cuerpo 24 horas antes de la sesión. El día de la cita acude con ropa cómoda y suelta de color oscuro, sin perfumes, aceites, desodorante ni maquillaje en la piel.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- STEP-BY-STEP BOOKING DRAWER / MODAL -->
+    <div id="booking-modal" class="modal-wrapper">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        
+        <div class="modal-container" id="modal-container">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="modal-title-box">
+                    <span class="modal-tag">Reserva tu cita</span>
+                    <h4 id="modal-title-service" class="modal-title-service">Bronceado Sencillo</h4>
+                </div>
+                <button id="close-modal-btn" class="modal-close-btn">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Steps indicator -->
+            <div class="modal-steps-indicator">
+                <span id="step-indicator-1" class="step-label active">1. ESPECIALISTA</span>
+                <span id="step-indicator-2" class="step-label">&bull; 2. FECHA Y HORA</span>
+                <span id="step-indicator-3" class="step-label">&bull; 3. DATOS</span>
+            </div>
+
+            <!-- Modal Body (Steps Content) -->
+            <div class="modal-body">
+                
+                <!-- STEP 1: SELECT SPECIALIST -->
+                <div id="booking-step-1" class="modal-step-section active">
+                    <h5 class="step-headline">Elige un profesional</h5>
+                    <div class="specialist-list">
+                        <div class="specialist-item active" data-specialist="cualquiera">
+                            <div class="specialist-info">
+                                <div class="specialist-avatar group-icon">
+                                    <span class="material-symbols-outlined">group</span>
+                                </div>
+                                <div class="specialist-details">
+                                    <span class="specialist-name">Cualquier profesional</span>
+                                    <span class="specialist-role">Asignación automática y rápida</span>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-gold specialist-check">radio_button_checked</span>
+                        </div>
+                        <div class="specialist-item" data-specialist="Maria">
+                            <div class="specialist-info">
+                                <div class="specialist-avatar initials-avatar">M</div>
+                                <div class="specialist-details">
+                                    <span class="specialist-name">María</span>
+                                    <span class="specialist-role">Especialista en Bronceado Brasilero</span>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-muted specialist-check">radio_button_unchecked</span>
+                        </div>
+                        <div class="specialist-item" data-specialist="Angelica">
+                            <div class="specialist-info">
+                                <div class="specialist-avatar initials-avatar">A</div>
+                                <div class="specialist-details">
+                                    <span class="specialist-name">Angélica</span>
+                                    <span class="specialist-role">Diseñadora de Estética Corporal</span>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-muted specialist-check">radio_button_unchecked</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 2: SELECT DATE & TIME -->
+                <div id="booking-step-2" class="modal-step-section">
+                    <h5 class="step-headline">Selecciona fecha y hora</h5>
+                    
+                    <!-- Calendar element -->
+                    <div class="calendar-box">
+                        <div class="calendar-header">
+                            <button id="calendar-prev-month" class="cal-nav-btn"><span class="material-symbols-outlined">chevron_left</span></button>
+                            <span id="calendar-month-year" class="cal-month-title">Junio 2026</span>
+                            <button id="calendar-next-month" class="cal-nav-btn"><span class="material-symbols-outlined">chevron_right</span></button>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                        </div>
+                        <div class="calendar-days-grid" id="calendar-days">
+                            <!-- Dynamic days will be rendered here -->
+                        </div>
+                    </div>
+
+                    <!-- Time slots area -->
+                    <div class="time-slots-box">
+                        <span class="time-slots-title">Turnos Disponibles</span>
+                        <div class="time-slots-grid" id="time-slots-container">
+                            <!-- Dynamic hours pills -->
+                        </div>
+                        <p id="no-slots-message" class="no-slots-alert">No hay horarios disponibles para esta fecha. Selecciona otro día.</p>
+                    </div>
+                </div>
+
+                <!-- STEP 3: CLIENT DETAILS -->
+                <div id="booking-step-3" class="modal-step-section">
+                    <h5 class="step-headline">Tus datos de contacto</h5>
+                    <form id="booking-form" class="booking-form">
+                        <div class="form-group">
+                            <label class="form-label" for="client-name">Nombre Completo *</label>
+                            <input type="text" id="client-name" required class="form-input" placeholder="Ingresa tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="client-phone">Teléfono Móvil *</label>
+                            <input type="tel" id="client-phone" required class="form-input" placeholder="Ej: 600 000 000">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="client-email">Correo Electrónico *</label>
+                            <input type="email" id="client-email" required class="form-input" placeholder="ejemplo@correo.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="client-notes">Notas (Opcional)</label>
+                            <textarea id="client-notes" rows="2" class="form-textarea" placeholder="Alguna indicación o preferencia..."></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- STEP 4: BOOKING SUCCESS SCREEN -->
+                <div id="booking-step-4" class="modal-step-section success-step">
+                    <div class="success-icon-wrapper">
+                        <span class="material-symbols-outlined success-icon">task_alt</span>
+                    </div>
+                    <div class="success-text-box">
+                        <h4 class="success-title">¡Cita Confirmada!</h4>
+                        <p class="success-desc">Tu reserva ha sido registrada correctamente. Te esperamos en la clínica. Guarda los detalles a continuación.</p>
+                    </div>
+                    
+                    <div class="summary-receipt">
+                        <div class="receipt-row"><span class="receipt-label">Servicio:</span><span class="receipt-val" id="summary-service">-</span></div>
+                        <div class="receipt-row"><span class="receipt-label">Fecha:</span><span class="receipt-val" id="summary-date">-</span></div>
+                        <div class="receipt-row"><span class="receipt-label">Hora:</span><span class="receipt-val" id="summary-time">-</span></div>
+                        <div class="receipt-row"><span class="receipt-label">Profesional:</span><span class="receipt-val" id="summary-specialist">-</span></div>
+                        <div class="receipt-row total-row"><span class="receipt-label">Precio:</span><span class="receipt-val" id="summary-price">-</span></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer" id="modal-footer">
+                <button id="modal-back-btn" class="btn-back">Atrás</button>
+                <button id="modal-next-btn" class="btn-next">Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MY APPOINTMENTS SIDEBAR DRAWER -->
+    <div id="appointments-drawer" class="drawer-wrapper">
+        <div class="drawer-overlay" id="drawer-overlay"></div>
+        <div class="drawer-container" id="drawer-container">
+            <!-- Header -->
+            <div class="drawer-header">
+                <h4 class="drawer-title">Mis Citas</h4>
+                <button id="close-drawer-btn" class="drawer-close-btn">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <!-- Body -->
+            <div class="drawer-body" id="drawer-appointments-list">
+                <!-- Bookings rendered in JavaScript -->
+            </div>
+            <!-- Empty state -->
+            <div id="drawer-empty-state" class="drawer-empty-state">
+                <span class="material-symbols-outlined empty-icon">event_busy</span>
+                <span class="empty-title">No tienes citas programadas</span>
+                <span class="empty-desc">¡Selecciona un tratamiento del catálogo para agendar!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOBILE MENU SIDEBAR DRAWER -->
+    <div id="mobile-menu-drawer" class="drawer-wrapper">
+        <div class="drawer-overlay" id="menu-drawer-overlay"></div>
+        <div class="drawer-container" id="menu-drawer-container">
+            <!-- Header -->
+            <div class="drawer-header">
+                <h4 class="drawer-title">Menú</h4>
+                <button id="close-menu-drawer-btn" class="drawer-close-btn">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <!-- Body -->
+            <div class="drawer-body">
+                <nav class="mobile-drawer-nav">
+                    <span class="drawer-section-title">Servicios</span>
+                    <button class="mobile-drawer-nav-link" data-category="bronceados">
+                        <span class="material-symbols-outlined">spa</span>
+                        Bronceado Brasilero
+                    </button>
+                    <button class="mobile-drawer-nav-link" data-category="bonos">
+                        <span class="material-symbols-outlined">local_activity</span>
+                        Bonos Ahorro
+                    </button>
+                    <button class="mobile-drawer-nav-link" data-category="corporales">
+                        <span class="material-symbols-outlined">accessibility_new</span>
+                        Tratamientos Corporales
+                    </button>
+                    <button class="mobile-drawer-nav-link" data-category="cejas">
+                        <span class="material-symbols-outlined">visibility</span>
+                        Cejas y Pestañas
+                    </button>
+                    <button class="mobile-drawer-nav-link" id="mobile-about-us-link">
+                        <span class="material-symbols-outlined">info</span>
+                        Sobre Nosotros
+                    </button>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- PERSISTENT CONVERSION CHATBOT ("Canela AI") -->
+    <div id="chatbot-wrapper" class="chatbot-wrapper">
+        <!-- Floating chat window -->
+        <div id="chat-window" class="chat-window">
+            
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="bot-profile">
+                    <div class="bot-avatar-box">
+                        <img src="assets/brand_logo.png" alt="Bot Logo" class="bot-avatar-img">
+                        <span class="status-indicator-online"></span>
+                    </div>
+                    <div class="bot-info">
+                        <span class="bot-name">Canela AI</span>
+                        <span class="bot-tagline">Asistente de Reservas</span>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <button id="close-chat-btn" class="chat-close-btn">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Chat Messages Log -->
+            <div class="chat-messages" id="chat-messages-log">
+                <!-- Welcome Message from Canela -->
+                <div class="chat-bubble-row message-in">
+                    <div class="chat-avatar">C</div>
+                    <div class="chat-text">
+                        ¡Hola! 🌞 Soy Canela, asistente virtual de **Piel Canela Bronze**. ¿Lista para conseguir un bronceado espectacular? 🤎
+                        <br><br>
+                        ¿En qué te puedo ayudar hoy? Elige una opción rápida o escribe tu consulta.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Quick Replies Options -->
+            <div class="chat-quick-replies" id="chat-quick-replies">
+                <button class="chat-reply-pill" data-action="recomendar">Recomendar bronceado 🤎</button>
+                <button class="chat-reply-pill" data-action="preparar">¿Cómo me preparo? 🧖‍♀️</button>
+                <button class="chat-reply-pill" data-action="donde">¿Dónde están? 📍</button>
+                <button class="chat-reply-pill" data-action="reservar">Reservar una cita 📅</button>
+            </div>
+
+            <!-- Chat Input Area -->
+            <div class="chat-input-area">
+                <input type="text" id="chat-input-field" placeholder="Escribe tu mensaje..." class="chat-input-box">
+                <button id="send-chat-btn" class="chat-send-btn">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat Trigger Bubble -->
+        <button id="chat-trigger-btn" class="chat-trigger-btn magnetic-btn">
+            <!-- Pulsing outer ring -->
+            <span class="ping-ring"></span>
+            
+            <span class="material-symbols-outlined trigger-icon" id="chat-trigger-icon">chat_bubble</span>
+            
+            <!-- Unread notification indicator dot -->
+            <span class="notification-dot">1</span>
+        </button>
+    </div>
+
+    <!-- ABOUT US MODAL -->
+    <div id="about-modal" class="modal-wrapper">
+        <div class="modal-overlay" id="about-modal-overlay"></div>
+        <div class="about-modal-container" id="about-modal-container">
+            <button id="close-about-btn" class="modal-close-btn">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <div class="about-modal-content">
+                <!-- Video Container -->
+                <div class="about-video-box">
+                    <video id="about-video" class="about-video" playsinline controls loop preload="none">
+                        <source src="videos/presentacion.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
+                <!-- Text Container -->
+                <div class="about-text-box">
+                    <h3 class="about-title">Sobre Nosotros</h3>
+                    <p class="about-desc">
+                        Bienvenida a <strong>Piel Canela Bronze</strong>, el primer Spa de Bronceado Brasilero en Andalucía. 
+                        Nuestra pasión es ofrecerte un tono dorado espectacular y uniforme utilizando técnicas exclusivas, seguras y personalizadas.
+                    </p>
+                    <p class="about-desc">
+                        En nuestro espacio en Nervión, Sevilla, nos enfocamos en cuidar tu piel sin el uso de colorantes químicos ni caña de azúcar, garantizando una hidratación profunda y un brillo natural desde la primera sesión.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature-item">
+                            <span class="material-symbols-outlined">verified</span>
+                            <span>Bronceado 100% natural y uniforme</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="material-symbols-outlined">spa</span>
+                            <span>Cuidado e hidratación profunda de la piel</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <span class="material-symbols-outlined">workspace_premium</span>
+                            <span>Especialistas certificados en Sevilla</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

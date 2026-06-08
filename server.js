@@ -19,10 +19,10 @@ const MIME_TYPES = {
 const server = http.createServer((req, res) => {
     // Normalize URL and resolve local file path
     let safeUrl = req.url.split('?')[0];
-    if (safeUrl === '/') {
-        safeUrl = '/index.html';
+    if (safeUrl === '/' || safeUrl === '/index.html') {
+        safeUrl = '/piel canela/index.html';
     } else if (safeUrl === '/favicon.ico') {
-        safeUrl = '/assets/favicon.png';
+        safeUrl = '/piel canela/assets/favicon.png';
     }
     
     const filePath = path.join(__dirname, safeUrl);
