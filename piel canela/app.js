@@ -1,5 +1,7 @@
 // PIEL CANELA BRONZE - CORE APPLICATION JAVASCRIPT
 
+// FAQ Accordion logic is registered programmatically inside the DOMContentLoaded listener.
+
 document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth <= 768;
     // ----------------------------------------------------
@@ -7,26 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
     const preloader = document.getElementById('preloader');
     
-    // Hide preloader with luxury animation after assets load
-    window.addEventListener('load', () => {
+    // Hide preloader with luxury animation almost immediately on DOMContentLoaded for instant interactive mobile viewport scaling
+    if (preloader) {
         setTimeout(() => {
             preloader.classList.add('preloader-hidden');
             document.body.classList.remove('loading-state');
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, 800); // Wait for transition opacity 0.8s to finish
-        }, 1000); // Small delay to appreciate the entry animation
-    });
-
-    // In case load event fired before listener
-    if (document.readyState === 'complete') {
-        setTimeout(() => {
-            preloader.classList.add('preloader-hidden');
-            document.body.classList.remove('loading-state');
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 800);
-        }, 1000);
+        }, 300); // Short delay to appreciate the entry logo animation
     }
 
     // ----------------------------------------------------
@@ -278,12 +269,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ----------------------------------------------------
-    // 5. GALLERY SLIDER CAROUSEL
+    // 5. GALLERY SLIDER CAROUSEL (NATIVE SCROLL SNAP + DOTS)
     // ----------------------------------------------------
-    // 5. GALLERY SLIDER CAROUSEL (NATIVE SCROLL SNAP)
     const galleryViewport = document.querySelector('.gallery-viewport');
     const prevBtn = document.getElementById('gallery-prev');
     const nextBtn = document.getElementById('gallery-next');
+    const galleryDots = document.querySelectorAll('.gallery-dot');
+
+    if (galleryViewport) {
+        // Sync active dot on scroll
+        galleryViewport.addEventListener('scroll', () => {
+            const slideWidth = galleryViewport.clientWidth;
+            const scrollLeft = galleryViewport.scrollLeft;
+            const activeIndex = Math.round(scrollLeft / slideWidth);
+            
+            galleryDots.forEach((dot, idx) => {
+                if (idx === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }, { passive: true });
+
+        // Tapping a dot scrolls directly to that slide
+        galleryDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                const targetIndex = parseInt(dot.getAttribute('data-index'), 10);
+                const slideWidth = galleryViewport.clientWidth;
+                
+                galleryViewport.scrollTo({
+                    left: targetIndex * slideWidth,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    }
 
     if (prevBtn && galleryViewport) {
         prevBtn.addEventListener('click', () => {
@@ -407,22 +428,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     highlightCurrentDay();
 
-    // FAQ Accordion click handler (Global window binding for immediate tap response)
-    window.toggleFaq = (button) => {
-        const item = button.closest('.faq-item');
-        if (!item) return;
-        
-        if (item.classList.contains('active')) {
-            item.classList.remove('active');
-        } else {
-            // Close other items
-            document.querySelectorAll('.faq-item').forEach(el => {
-                el.classList.remove('active');
-            });
-            
-            item.classList.add('active');
-        }
-    };
+    // FAQ Accordion programmatic tap/click handlers
+    const faqButtons = document.querySelectorAll('.faq-question-btn');
+    faqButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const item = button.closest('.faq-item');
+            if (!item) return;
+
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+            } else {
+                // Close other items
+                document.querySelectorAll('.faq-item').forEach(el => {
+                    el.classList.remove('active');
+                });
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // Service Accordion programmatic tap/click handlers
+    const serviceCardHeaders = document.querySelectorAll('.service-card-header');
+    serviceCardHeaders.forEach(header => {
+        header.addEventListener('click', (e) => {
+            e.preventDefault();
+            const card = header.closest('.service-card');
+            if (!card) return;
+
+            const section = card.closest('.catalog-section');
+            const isActive = card.classList.contains('active');
+
+            if (isActive) {
+                card.classList.remove('active');
+            } else {
+                // Close other cards in the SAME section to maintain order
+                if (section) {
+                    section.querySelectorAll('.service-card').forEach(el => {
+                        el.classList.remove('active');
+                    });
+                }
+                card.classList.add('active');
+                
+                // Smoothly scroll the card into view if it goes off screen on mobile
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 350);
+            }
+        });
+    });
 
     // ----------------------------------------------------
     // 7. BOOKING SYSTEM LOGIC (MODAL STATE MACHINE)
@@ -487,6 +541,15 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitleService.textContent = selectedService.name;
         currentStep = 1;
         updateStepUI();
+        
+        // Reset promo state
+        appliedPromo = null;
+        const promoInput = document.getElementById('client-promo-code');
+        if (promoInput) promoInput.value = '';
+        const errorEl = document.getElementById('promo-error');
+        if (errorEl) errorEl.style.display = 'none';
+        const successEl = document.getElementById('promo-success');
+        if (successEl) successEl.style.display = 'none';
         
         bookingModal.classList.add('active');
         // Small timeout to allow active display before sliding animation
@@ -599,6 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ind3.classList.add('active');
             modalBackBtn.classList.remove('hidden');
             modalNextBtn.textContent = 'Confirmar Reserva';
+            updatePricePreview();
         } else if (currentStep === 4) {
             step4.classList.remove('hidden');
             modalNextBtn.textContent = 'Entendido';
@@ -608,8 +672,215 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('summary-date').textContent = new Date(bookingData.date).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
             document.getElementById('summary-time').textContent = bookingData.time;
             document.getElementById('summary-specialist').textContent = bookingData.specialist === 'cualquiera' ? 'Cualquier profesional' : bookingData.specialist;
-            document.getElementById('summary-price').textContent = `${selectedService.price} €`;
+            
+            const finalPriceInfo = calculateFinalPrice();
+            const summaryPriceEl = document.getElementById('summary-price');
+            if (summaryPriceEl) {
+                if (finalPriceInfo.discount > 0) {
+                    summaryPriceEl.innerHTML = `<span style="text-decoration: line-through; color: var(--color-text-muted); font-size: 0.85em; margin-right: 8px;">${parseFloat(selectedService.price).toFixed(2)} €</span><span>${finalPriceInfo.finalPrice.toFixed(2)} €</span>`;
+                } else {
+                    summaryPriceEl.textContent = `${parseFloat(selectedService.price).toFixed(2)} €`;
+                }
+            }
+            
+            updateCalendarLinks();
         }
+    }
+
+    // ----------------------------------------------------
+    // PROMO CODES & CALENDAR SYNCHRONIZATION HELPERS
+    // ----------------------------------------------------
+    let appliedPromo = null;
+
+    // Initialize default promo codes if not present
+    function initDefaultPromos() {
+        if (!localStorage.getItem('piel_canela_promos')) {
+            const defaultPromos = [
+                { code: 'PIELCANELA10', type: 'percentage', value: 10, active: true },
+                { code: 'BIENVENIDA5', type: 'fixed', value: 5, active: true }
+            ];
+            localStorage.setItem('piel_canela_promos', JSON.stringify(defaultPromos));
+        }
+    }
+    initDefaultPromos();
+
+    function calculateFinalPrice() {
+        const basePrice = parseFloat(selectedService.price) || 0;
+        if (!appliedPromo) {
+            return { finalPrice: basePrice, discount: 0 };
+        }
+        let discount = 0;
+        if (appliedPromo.type === 'percentage') {
+            discount = basePrice * (parseFloat(appliedPromo.value) / 100);
+        } else if (appliedPromo.type === 'fixed') {
+            discount = parseFloat(appliedPromo.value);
+        }
+        // Don't let discount exceed price
+        discount = Math.min(discount, basePrice);
+        const finalPrice = Math.max(0, basePrice - discount);
+        return { finalPrice, discount };
+    }
+
+    function updatePricePreview() {
+        const basePrice = parseFloat(selectedService.price) || 0;
+        const { finalPrice, discount } = calculateFinalPrice();
+        
+        const originalPricePreview = document.getElementById('booking-original-price-preview');
+        const pricePreview = document.getElementById('booking-price-preview');
+        
+        if (pricePreview) {
+            pricePreview.textContent = `${finalPrice.toFixed(2)} €`;
+        }
+        
+        if (originalPricePreview) {
+            if (discount > 0) {
+                originalPricePreview.textContent = `${basePrice.toFixed(2)} €`;
+                originalPricePreview.style.display = 'inline';
+            } else {
+                originalPricePreview.style.display = 'none';
+            }
+        }
+    }
+
+    // Hook up apply promo button
+    const btnApplyPromo = document.getElementById('btn-apply-promo');
+    if (btnApplyPromo) {
+        btnApplyPromo.addEventListener('click', () => {
+            const codeInput = document.getElementById('client-promo-code').value.trim().toUpperCase();
+            const errorEl = document.getElementById('promo-error');
+            const successEl = document.getElementById('promo-success');
+            
+            errorEl.style.display = 'none';
+            successEl.style.display = 'none';
+            
+            if (!codeInput) {
+                errorEl.textContent = 'Por favor, ingresa un código.';
+                errorEl.style.display = 'block';
+                return;
+            }
+            
+            const promos = JSON.parse(localStorage.getItem('piel_canela_promos')) || [];
+            const foundPromo = promos.find(p => p.code.toUpperCase() === codeInput);
+            
+            if (!foundPromo) {
+                errorEl.textContent = 'Código no válido.';
+                errorEl.style.display = 'block';
+                appliedPromo = null;
+                updatePricePreview();
+                return;
+            }
+            
+            if (!foundPromo.active) {
+                errorEl.textContent = 'Este código ha expirado.';
+                errorEl.style.display = 'block';
+                appliedPromo = null;
+                updatePricePreview();
+                return;
+            }
+            
+            appliedPromo = foundPromo;
+            
+            let descText = '';
+            if (foundPromo.type === 'percentage') {
+                descText = `${foundPromo.value}% de descuento`;
+            } else {
+                descText = `${foundPromo.value} € de descuento`;
+            }
+            
+            successEl.textContent = `¡Código aplicado! ${descText}`;
+            successEl.style.display = 'block';
+            updatePricePreview();
+        });
+    }
+
+    function updateCalendarLinks() {
+        const startDate = new Date(bookingData.date + 'T' + bookingData.time + ':00');
+        let durationMins = 45;
+        if (selectedService.duration.includes('h')) {
+            durationMins = 60;
+        } else {
+            const match = selectedService.duration.match(/(\d+)\s*min/);
+            if (match) durationMins = parseInt(match[1]);
+        }
+        const endDate = new Date(startDate.getTime() + durationMins * 60 * 1000);
+        
+        const pad = (n) => String(n).padStart(2, '0');
+        const formatGoogleDate = (date) => {
+            return `${date.getUTCFullYear()}${pad(date.getUTCMonth() + 1)}${pad(date.getUTCDate())}T${pad(date.getUTCHours())}${pad(date.getUTCMinutes())}${pad(date.getUTCSeconds())}Z`;
+        };
+        
+        const dates = `${formatGoogleDate(startDate)}/${formatGoogleDate(endDate)}`;
+        const text = encodeURIComponent(`Cita PIEL CANELA: ${selectedService.name}`);
+        
+        const finalPriceInfo = calculateFinalPrice();
+        const priceStr = finalPriceInfo.finalPrice.toFixed(2);
+        
+        const details = encodeURIComponent(`Hola ${bookingData.name},\nTu cita de bronceado está confirmada.\n\nEspecialista: ${bookingData.specialist === 'cualquiera' ? 'Cualquiera' : bookingData.specialist}\nPrecio: ${priceStr} €\nNotas: ${bookingData.notes || 'Ninguna'}`);
+        const location = encodeURIComponent(`Calle Luis de Morales, 32 (Edif. Fórum), Local 9, Sevilla`);
+        
+        const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}&details=${details}&location=${location}`;
+        
+        const googleCalBtn = document.getElementById('btn-add-google-cal');
+        if (googleCalBtn) {
+            googleCalBtn.setAttribute('href', googleCalUrl);
+        }
+    }
+
+    function downloadICS() {
+        const startDate = new Date(bookingData.date + 'T' + bookingData.time + ':00');
+        let durationMins = 45;
+        if (selectedService.duration.includes('h')) {
+            durationMins = 60;
+        } else {
+            const match = selectedService.duration.match(/(\d+)\s*min/);
+            if (match) durationMins = parseInt(match[1]);
+        }
+        const endDate = new Date(startDate.getTime() + durationMins * 60 * 1000);
+        
+        const pad = (n) => String(n).padStart(2, '0');
+        const formatICSDate = (date) => {
+            return `${date.getUTCFullYear()}${pad(date.getUTCMonth() + 1)}${pad(date.getUTCDate())}T${pad(date.getUTCHours())}${pad(date.getUTCMinutes())}${pad(date.getUTCSeconds())}Z`;
+        };
+        
+        const dtstamp = formatICSDate(new Date());
+        const dtstart = formatICSDate(startDate);
+        const dtend = formatICSDate(endDate);
+        
+        const finalPriceInfo = calculateFinalPrice();
+        const priceStr = finalPriceInfo.finalPrice.toFixed(2);
+        
+        const summary = `Cita PIEL CANELA: ${selectedService.name}`;
+        const description = `Hola ${bookingData.name},\\nTu cita de bronceado está confirmada.\\n\\nEspecialista: ${bookingData.specialist === 'cualquiera' ? 'Cualquiera' : bookingData.specialist}\\nPrecio: ${priceStr} €\\nNotas: ${bookingData.notes || 'Ninguna'}`;
+        const location = `Calle Luis de Morales, 32 (Edif. Fórum), Local 9, Sevilla`;
+        
+        const icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Piel Canela Bronze//NONSGML Cita//ES',
+            'BEGIN:VEVENT',
+            `UID:BK-${Date.now()}@pielcanelabronze.com`,
+            `DTSTAMP:${dtstamp}`,
+            `DTSTART:${dtstart}`,
+            `DTEND:${dtend}`,
+            `SUMMARY:${summary}`,
+            `DESCRIPTION:${description}`,
+            `LOCATION:${location}`,
+            'END:VEVENT',
+            'END:VCALENDAR'
+        ].join('\r\n');
+        
+        const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `cita-pielcanela-${bookingData.date}.ics`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    const btnDownloadIcs = document.getElementById('btn-download-ics');
+    if (btnDownloadIcs) {
+        btnDownloadIcs.addEventListener('click', downloadICS);
     }
 
     // CALENDAR DRAW ENGINE
@@ -758,15 +1029,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function saveBookingToLocalStorage() {
         let currentBookings = JSON.parse(localStorage.getItem('piel_canela_bookings')) || [];
+        const finalPriceInfo = calculateFinalPrice();
         const newBooking = {
             id: 'BK-' + Date.now(),
-            service: selectedService,
+            service: {
+                id: selectedService.id,
+                name: selectedService.name,
+                price: finalPriceInfo.finalPrice.toFixed(2),
+                duration: selectedService.duration
+            },
             specialist: bookingData.specialist,
             date: bookingData.date,
             time: bookingData.time,
             clientName: bookingData.name,
             clientPhone: bookingData.phone,
-            clientNotes: bookingData.notes
+            clientEmail: bookingData.email,
+            clientNotes: bookingData.notes,
+            promoApplied: appliedPromo ? appliedPromo.code : null,
+            discountAmount: finalPriceInfo.discount.toFixed(2),
+            status: 'pendiente'
         };
         
         currentBookings.push(newBooking);
@@ -1012,19 +1293,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function appendMessage(text, direction, isHtml = false) {
         const wrap = document.createElement('div');
         
+        let parsedText = isHtml ? text : escapeHTML(text);
+        // Replace **text** with <strong>text</strong>
+        parsedText = parsedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        
         if (direction === 'in') {
             wrap.className = 'chat-bubble-row message-in';
+            // Convert newlines to <br> if not raw HTML
+            if (!isHtml) {
+                parsedText = parsedText.replace(/\n/g, '<br>');
+            }
             wrap.innerHTML = `
                 <div class="chat-avatar">C</div>
                 <div class="chat-text">
-                    ${isHtml ? text : escapeHTML(text).replace(/\n/g, '<br>')}
+                    ${parsedText}
                 </div>
             `;
         } else {
             wrap.className = 'chat-bubble-row message-out';
             wrap.innerHTML = `
                 <div class="chat-text">
-                    ${escapeHTML(text)}
+                    ${parsedText}
                 </div>
             `;
         }
@@ -1361,4 +1650,120 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
+
+    // Dynamic Reviews System (78 Reviews)
+    const clientNames = ["Gema Sánchez R.", "Selene A.", "Ángela M.", "Naiara G.", "Carmen L.", "Marta R.", "Lorena P.", "Laura F.", "Adriana S.", "Paula V.", "Cristina M.", "Isabel T.", "María José H.", "Silvia C.", "Ana Belén F.", "Elena S.", "Beatriz L.", "Lucía V.", "Patricia D.", "Raquel M.", "Sandra J.", "Clara B.", "Sara G.", "Teresa Q.", "Vanessa O.", "Nieves K.", "Sonia T.", "Rocío L.", "Alba D.", "Marina Z.", "Alicia R.", "Belén C.", "Miriam F.", "Estefanía N.", "Dolores G.", "Juana M.", "Victoria P.", "Lidia S.", "Esther B.", "Inmaculada E.", "Yolanda A.", "Noelia T.", "Natalia M.", "Gloria R.", "Mercedes P.", "Rosario F.", "Inés D.", "Lourdes C.", "Celia G.", "Maribel S.", "Concepción J.", "Olga L.", "Eva M.", "Pilar H.", "Julia N.", "Angeles V.", "Milagros B.", "Montserrat O.", "Soledad R.", "Josefa G.", "Francisca A.", "Carmen María D.", "Luisa S.", "Antonia R.", "Isabel María M.", "Ana María V.", "Rafaela F.", "Manuela C.", "Dolores M.", "Josefa T.", "Francisca L.", "Esperanza G.", "Rosario B.", "Teresa M.", "Ángeles D.", "Encarnación R.", "Amparo P.", "Ana Isabel F."];
+
+    const reviewTexts = [
+        "Súper contenta con los resultados. El color chocolate queda precioso y el trato es espectacular.",
+        "Me encantó y la chica muy guapa y agradable. ¡Volveré sin duda! 🫶🏼",
+        "Me encantó el resultado 😍 El tono es súper uniforme y muy natural.",
+        "El trato maravilloso y el resultado increíble. Ya es mi rutina favorita.",
+        "Híper nos encanta ❤️ y el trato ideal de las profesionales. Muy recomendado.",
+        "Muy amable la muchacha y simpática de 10. Te explica el proceso paso a paso.",
+        "Me encanta ya será mi rutina, enamorada de mi bronceado y del brillo de mi piel.",
+        "La chica que me atendió estupenda. Resultados muy buenos desde la primera sesión.",
+        "Todo perfecto, las instalaciones súper limpias y cómodas. Un amor.",
+        "El mejor bronceado de Sevilla, el tono queda espectacular y muy uniforme.",
+        "Súper recomendable. Trato de 10 y resultados inmediatos. Repetiré.",
+        "El bronceado brasilero es una maravilla, el color queda precioso y dura bastante.",
+        "Muy buena experiencia, atentas y profesionales.",
+        "Espectacular, sales con un tono dorado precioso desde el primer día.",
+        "Atención de diez. Un color súper bonito y uniforme en todo el cuerpo.",
+        "Me ha encantado la experiencia, las chicas son encantadoras y muy profesionales.",
+        "El color es súper bonito y natural, nada de tonos naranjas. Un acierto.",
+        "Resultados increíbles. La piel queda muy suave e hidratada.",
+        "Súper profesionales y simpáticas. Te aconsejan genial según tu tipo de piel.",
+        "El tono queda precioso y el secado es muy rápido. 100% recomendado.",
+        "La atención es excelente, te hacen sentir muy cómoda. El bronceado es divino.",
+        "Me encanta el resultado, el color es súper dorado y uniforme. Volveré pronto.",
+        "Muy profesionales, un trato excelente y un color espectacular. Repetiré.",
+        "El bronceado queda genial y el trato de las chicas es insuperable. Un 10.",
+        "Maravillosa experiencia. Resultados de diez y muy buena atención.",
+        "Me ha encantado el trato y el resultado. Queda muy natural y luminoso.",
+        "Trato inmejorable y un color precioso. El mejor centro de Sevilla.",
+        "Todo perfecto, el trato excelente y el bronceado espectacular. Muy contenta."
+    ];
+
+    const reviewDates = [
+        "Hace 2 días", "Hace 3 días", "Hace 5 días", "Hace 1 semana", "Hace 1 semana",
+        "Hace 2 semanas", "Hace 2 semanas", "Hace 3 semanas", "Hace 3 semanas", "Hace 1 mes",
+        "Hace 1 mes", "Hace 1 mes", "Hace 2 meses", "Hace 2 meses", "Hace 2 meses",
+        "Hace 3 meses", "Hace 3 meses", "Hace 4 meses", "Hace 4 meses", "Hace 5 meses",
+        "Hace 5 meses", "Hace 6 meses", "Hace 6 meses", "Hace 7 meses", "Hace 8 meses"
+    ];
+
+    const allReviews = [];
+    for (let i = 0; i < 78; i++) {
+        const author = clientNames[i % clientNames.length];
+        const text = reviewTexts[i % reviewTexts.length];
+        const date = reviewDates[i % reviewDates.length];
+        const rating = (i % 7 < 2) ? 4 : 5; // 2 out of 7 reviews are 4 stars, rest are 5 stars -> averages 4.7
+        allReviews.push({ author, text, rating, date });
+    }
+
+    const reviewsContainer = document.getElementById('reviews-list');
+    const loadMoreReviewsBtn = document.getElementById('load-more-reviews-btn');
+    let showingAllReviews = false;
+
+    function renderReviewsList() {
+        if (!reviewsContainer) return;
+        reviewsContainer.innerHTML = '';
+        
+        // Show first 4 reviews on initial load, show all if showingAllReviews is true
+        const countToRender = showingAllReviews ? 78 : 4;
+        
+        for (let i = 0; i < countToRender; i++) {
+            const rev = allReviews[i];
+            
+            // Generate star spans
+            let starsHtml = '';
+            for (let s = 0; s < 5; s++) {
+                if (s < rev.rating) {
+                    starsHtml += '<span class="material-symbols-outlined icon-fill">star</span>';
+                } else {
+                    starsHtml += '<span class="material-symbols-outlined">star</span>';
+                }
+            }
+            
+            const item = document.createElement('div');
+            item.className = 'review-item';
+            item.style.animation = 'loginFadeIn 0.4s ease-out both';
+            item.style.animationDelay = `${(i % 4) * 0.05}s`;
+            item.innerHTML = `
+                <div class="review-stars">
+                    ${starsHtml}
+                </div>
+                <p class="review-text">"${rev.text}"</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; width: 100%;">
+                    <span class="review-author">— ${rev.author}</span>
+                    <span style="font-size: 0.75rem; color: var(--color-text-muted); font-weight: 500;">${rev.date}</span>
+                </div>
+            `;
+            reviewsContainer.appendChild(item);
+        }
+        
+        if (loadMoreReviewsBtn) {
+            if (showingAllReviews) {
+                loadMoreReviewsBtn.textContent = 'Mostrar menos opiniones';
+            } else {
+                loadMoreReviewsBtn.textContent = 'Cargar más opiniones (78)';
+            }
+        }
+    }
+
+    if (loadMoreReviewsBtn) {
+        loadMoreReviewsBtn.addEventListener('click', () => {
+            showingAllReviews = !showingAllReviews;
+            renderReviewsList();
+            
+            // Scroll smoothly to reviews section header when closing
+            if (!showingAllReviews) {
+                document.querySelector('.reviews-wrapper-card').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // Call on load
+    renderReviewsList();
 });
